@@ -1,0 +1,129 @@
+.signup-page {
+  display: flex;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Left section */
+.signup-left {
+  flex: 1;
+  background-color: #014d4d;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.signup-left h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.signup-left p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #d9e6e6;
+}
+
+.btn-login {
+  background-color: #fbbf24;
+  color: #1f2937;
+  border: none;
+  padding: 12px 25px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #facc15;
+}
+
+/* Right section */
+.signup-right {
+  flex: 1;
+  background-color: #eaf3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 80px;
+}
+
+.signup-title {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+.signup-subtitle {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form label {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.signup-form input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.signup-form input:focus {
+  border-color: #0ea5e9;
+}
+
+.btn-create {
+  background-color: #0f766e;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-create:hover {
+  background-color: #115e59;
+}
+
+.signup-divider {
+  text-align: center;
+  margin: 25px 0;
+  color: #6b7280;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-google img {
+  width: 20px;
+  margin-right: 8px;
+}
