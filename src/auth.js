@@ -1,4 +1,4 @@
-// src/auth.js
+
 
 export const login = (token) => {
   localStorage.setItem("authToken", token);
