@@ -24,6 +24,7 @@ function App() {
     navigate("/getstarted");
   };
 
+  
   // Hide navbar on dashboard & auth-related pages
   const hideNavbar =
     location.pathname.startsWith("/dashboard") ||
