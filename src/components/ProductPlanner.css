@@ -1,0 +1,54 @@
+.planner-container {
+   text-align: center;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 1000px; /* same as planner */
+  background: #f9fafb;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.planner-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.planner-form input,
+.planner-form button {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.planner-form button {
+  background-color: #047857;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.planner-form button:hover {
+  background-color: #03664b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #047857;
+  color: white;
+}
