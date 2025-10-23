@@ -1,8 +1,7 @@
-// src/firebase.js
+
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-// ✅ Replace these with your own Firebase project settings
 const firebaseConfig = {
   apiKey: "AIzaSyAdzE4Xu9qiyBE1F7TgeZiOJ3SG-XLDavk",
   authDomain: "web-app-ee8ff.firebaseapp.com",
@@ -13,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-2197XB01CJ"
 };
 
-// Initialize Firebase
+//  Initialize Firebase once
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
