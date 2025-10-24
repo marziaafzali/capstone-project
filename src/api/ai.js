@@ -11,7 +11,6 @@ export default async function handler(req, res) {
   }
 
   const { prompt } = req.body;
-
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required" });
   }
@@ -23,9 +22,9 @@ export default async function handler(req, res) {
     });
 
     const aiText = response.choices[0].message.content;
-    return res.status(200).json({ result: aiText });
+    res.status(200).json({ result: aiText });
   } catch (error) {
     console.error("AI Error:", error);
-    return res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 }
