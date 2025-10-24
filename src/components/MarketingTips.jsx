@@ -12,11 +12,12 @@ function MarketingTips() {
     setError("");
     setResult("");
     try {
-      const res = await fetch("http://localhost:5000/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
+      const res = await fetch("/api/ai", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ prompt }),
+});
+
 
       const data = await res.json();
       console.log("🔹 API Response:", data); // 🧠 check what frontend receives

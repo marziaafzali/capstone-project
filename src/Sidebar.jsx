@@ -33,13 +33,13 @@ export default function Sidebar() {
         <h4 className="sidebar-section">Management</h4>
         <Link to="#">🧍 Employee Management</Link>
         <Link to="#">🏢 Company</Link>
-        <Link to="#">📦 Warehouse</Link>
 
         <hr />
 
         <h4 className="sidebar-section">Leave</h4>
         <Link to="#">🗓️ Requests</Link>
         <Link to="#">📃 Leave Policy</Link>
+        <Link to="/">🏠Back to Home</Link>
       </nav>
     </aside>
   );

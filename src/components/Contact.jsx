@@ -53,18 +53,6 @@ function Contact() {
               </a>
             </div>
           </div>
-
-        
-        
-
-          <div className="contact-item">
-           
-            <div className="icon-on">
-               <FaFacebook className="contact-icon" />Facebook 
-                <FaGlobe className="contact-icon" />WebSite
-                 <FaInstagram className="contact-icon" />Instagram
-            </div>
-          </div>
         </div>
 
         {/* RIGHT SIDE — CONTACT FORM */}

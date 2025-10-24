@@ -501,7 +501,7 @@ body {
 
 .contact-container {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: minmax(250px, 2fr) minmax(300px, 3fr);
   gap: 3rem;
   max-width: 1000px;
   margin: 0 auto;
@@ -536,16 +536,7 @@ body {
   color: #1f2937;
   font-size: 1rem;
 }
-.icon-on{
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-   border-radius: 10px;
-   margin-top: 3rem;
-   gap: 1rem;
-     display: flex;
-     padding: 2rem;
-  align-items: center;
- 
-}
+
 
 
 .contact-item p,
@@ -569,6 +560,7 @@ body {
   background: #fff;
   width: 100%;
   padding: 2rem;
+  margin-right: 4rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
@@ -638,10 +630,13 @@ body {
 /*marketing  */
 
 .marketing-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
   text-align: center;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 1000px; 
+  background: #f9fafb;
+  color: #1e293b;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
@@ -660,9 +655,12 @@ body {
 .ai-section textarea {
   width: 100%;
   max-width: 1200px;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  background-color: #047857;
+  color: white;
+  padding: 0.8rem 0;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }
 
 .ai-section button {
@@ -721,6 +719,7 @@ margin-bottom: 10rem;
 
 .ai-response {
   margin-top: 2rem;
+  max-width: 1000px;
   background-color: #f9fafb;
   padding: 2rem;
   border-radius: 10px;
