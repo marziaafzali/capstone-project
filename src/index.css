@@ -1,7 +1,5 @@
 /* index.css */
 
-/* General page setup */
-/* src/App.css */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -359,9 +357,9 @@ body {
   display: flex;
   gap: 15px;
   background-color: #065f46;
-  padding: 20px;
+ 
   border-radius: 16px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .mission-card .mission-icon {
