@@ -5,7 +5,8 @@
   align-items: center;
   background: #f1f5f9;
   font-family: "Poppins", sans-serif;
- 
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .auth-wrapper {
@@ -100,6 +101,8 @@ input {
   border-radius: 6px;
   outline: none;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input:focus {
@@ -150,4 +153,103 @@ input:focus {
 
 .signup-mode .auth-right {
   background: #f9fafb;
+}
+
+/* ============================================
+   RESPONSIVENESS
+   ============================================ */
+
+/* Tablet (below 992px) */
+@media (max-width: 992px) {
+  .auth-wrapper {
+    width: 90%;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .auth-left {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .auth-right {
+    padding: 2.5rem 2rem;
+  }
+
+  .left-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .left-content p {
+    font-size: 1rem;
+  }
+
+  .toggle-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (below 600px) */
+@media (max-width: 600px) {
+  .getstarted-container {
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .auth-wrapper {
+    flex-direction: column;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .auth-left {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .auth-right {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .left-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .left-content p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    max-width: 90%;
+    margin-left: -40px;
+  }
+
+  .form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-main {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .btn-google {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .btn-google img {
+    width: 18px;
+  }
 }
