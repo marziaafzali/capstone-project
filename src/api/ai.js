@@ -1,30 +1,35 @@
-// api/ai.js
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // secure key from Vercel
-});
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   const { prompt } = req.body;
-  if (!prompt) {
-    return res.status(400).json({ error: "Prompt is required" });
-  }
 
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
+    const openAIResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+      }),
     });
 
-    const aiText = response.choices[0].message.content;
-    res.status(200).json({ result: aiText });
-  } catch (error) {
-    console.error("AI Error:", error);
-    res.status(500).json({ error: error.message });
+    const data = await openAIResponse.json();
+
+    if (data.error) {
+      console.error("🔴 OpenAI API Error:", data.error);
+      return res.status(500).json({ error: data.error.message });
+    }
+
+    res.status(200).json({
+      result: data.choices?.[0]?.message?.content || "No response generated.",
+    });
+  } catch (err) {
+    console.error("🔴 Server Error:", err);
+    res.status(500).json({ error: "Failed to connect to AI API" });
   }
 }
