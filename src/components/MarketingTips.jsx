@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MarketingTips.css";
+
 
 function MarketingTips() {
   const [prompt, setPrompt] = useState("");

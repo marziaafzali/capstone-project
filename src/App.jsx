@@ -36,20 +36,58 @@ function App() {
   return (
     <div>
       {/* Public Navbar */}
-      {!hideNavbar && (
-        <header className="navbar">
-          <div className="logo">BizPlanner</div>
-          <nav className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/About">About</Link>
-            <Link to="/Services">Services</Link>
-            <Link to="/Contact">Contact</Link>
-          </nav>
-          <button className="btn-primary" onClick={handleGetStarted}>
-            Get Started
-          </button>
-        </header>
-      )}
+     {/* Public Navbar */}
+{/* Public Navbar */}
+{!hideNavbar && (
+  <header className="navbar">
+    <div className="nav-left">
+      <div className="logo">BizPlanner</div>
+
+      {/* Hamburger / Close Icon */}
+      <button
+        className="menu-toggle"
+        onClick={() => document.body.classList.toggle("nav-open")}
+        aria-label="Toggle menu"
+      >
+        <span className="menu-icon">☰</span>
+        <span className="close-icon">×</span>
+      </button>
+    </div>
+
+    {/* Nav Links */}
+    <nav className="nav-links">
+      <Link to="/" onClick={() => document.body.classList.remove("nav-open")}>
+        Home
+      </Link>
+      <Link to="/About" onClick={() => document.body.classList.remove("nav-open")}>
+        About
+      </Link>
+      <Link to="/Services" onClick={() => document.body.classList.remove("nav-open")}>
+        Services
+      </Link>
+      <Link to="/Contact" onClick={() => document.body.classList.remove("nav-open")}>
+        Contact
+      </Link>
+
+      {/* Get Started for mobile */}
+      <button
+        className="btn-primary mobile-btn"
+        onClick={() => {
+          document.body.classList.remove("nav-open");
+          handleGetStarted();
+        }}
+      >
+        Get Started
+      </button>
+    </nav>
+
+    {/* Get Started for desktop */}
+    <button className="btn-primary desktop-btn" onClick={handleGetStarted}>
+      Get Started
+    </button>
+  </header>
+)}
+
 
       {/* Page Routes */}
       <Routes>
