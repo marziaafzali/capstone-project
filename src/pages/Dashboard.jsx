@@ -18,13 +18,11 @@ export default function Dashboard() {
     setProducts(saved);
   }, []);
 
-  // Derived stats
   const totalRevenue = products.reduce((sum, p) => sum + p.price, 0);
   const totalCost = products.reduce((sum, p) => sum + p.cost, 0);
   const totalProfit = products.reduce((sum, p) => sum + p.profit, 0);
   const totalProducts = products.length;
 
-  // Prepare chart data (profit trend)
   const chartData = products.map((p, i) => ({
     name: p.name || `Item ${i + 1}`,
     profit: p.profit,
@@ -33,33 +31,46 @@ export default function Dashboard() {
   }));
 
   return (
-    <div className="dashboard-container">
-      <h1 className="dashboard-title">📊 Dashboard Overview</h1>
+    <div className="dashboard-page">
+      <h1 className="dashboard-header">Dashboard Overview</h1>
 
-      {/* Summary Cards */}
-      <div className="stats-grid">
-        <div className="stat-card blue">
-          <h3>Total Products</h3>
-          <p>{totalProducts}</p>
+      {/* Top Stats Cards */}
+      <div className="top-stats">
+        <div className="top-card">
+          <div className="icon user">👤</div>
+          <div>
+            <h3>Number of Products</h3>
+            <p>{totalProducts}</p>
+          </div>
         </div>
-        <div className="stat-card green">
-          <h3>Total Revenue</h3>
-          <p>${totalRevenue.toFixed(2)}</p>
+        <div className="top-card">
+          <div className="icon calendar">📅</div>
+          <div>
+            <h3>Total Revenue</h3>
+            <p>${totalRevenue.toFixed(2)}</p>
+          </div>
         </div>
-        <div className="stat-card yellow">
-          <h3>Total Cost</h3>
-          <p>${totalCost.toFixed(2)}</p>
+        <div className="top-card">
+          <div className="icon video">💰</div>
+          <div>
+            <h3>Total Cost</h3>
+            <p>${totalCost.toFixed(2)}</p>
+          </div>
         </div>
-        <div className="stat-card purple">
-          <h3>Total Profit</h3>
-          <p>${totalProfit.toFixed(2)}</p>
+        <div className="top-card">
+          <div className="icon like">📈</div>
+          <div>
+            <h3>Total Profit</h3>
+            <p>${totalProfit.toFixed(2)}</p>
+          </div>
         </div>
       </div>
 
-      {/* Charts Section */}
-      <div className="charts-section">
+      {/* Chart + Stats Reports */}
+      <div className="dashboard-content">
+        {/* Left Chart */}
         <div className="chart-box">
-          <h3>Profit Trend</h3>
+          <h2>Daily Reports</h2>
           {products.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={chartData}>
@@ -67,30 +78,33 @@ export default function Dashboard() {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="profit" stroke="#10b981" strokeWidth={3} />
+                <Line type="monotone" dataKey="profit" stroke="#facc15" strokeWidth={3} />
               </LineChart>
             </ResponsiveContainer>
           ) : (
-            <p style={{ textAlign: "center", color: "#777" }}>
-              No data yet. Add products in the Product Planner.
-            </p>
+            <p className="no-data">No data available. Add some products!</p>
           )}
         </div>
 
-        <div className="chart-box small">
-          <h3>Stats Report</h3>
-          <div className="report-grid">
-            <div className="report-item teal">
-              Income <span>${totalRevenue.toFixed(2)}</span>
+        {/* Right Stats */}
+        <div className="stats-box">
+          <h2>Stats Report</h2>
+          <div className="report-cards">
+            <div className="report-card income">
+              <h4>Income</h4>
+              <p>${totalRevenue.toFixed(2)}</p>
             </div>
-            <div className="report-item sky">
-              Profit <span>${totalProfit.toFixed(2)}</span>
+            <div className="report-card sales">
+              <h4>Profit</h4>
+              <p>${totalProfit.toFixed(2)}</p>
             </div>
-            <div className="report-item orange">
-              Cost <span>${totalCost.toFixed(2)}</span>
+            <div className="report-card users">
+              <h4>Cost</h4>
+              <p>${totalCost.toFixed(2)}</p>
             </div>
-            <div className="report-item pink">
-              Products <span>{totalProducts}</span>
+            <div className="report-card orders">
+              <h4>Products</h4>
+              <p>{totalProducts}</p>
             </div>
           </div>
         </div>

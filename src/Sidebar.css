@@ -11,25 +11,20 @@
   top: 0;
   bottom: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-
 .sidebar-header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 .sidebar-title {
- 
-  margin:20px auto;
-  font-size: 30px;
-  color: white; /* ensure title is white */
-}
-
-.sidebar-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  margin: 20px auto;
+  font-size: 28px;
+  color: white;
 }
 
 .sidebar-menu {
@@ -44,6 +39,9 @@
   padding: 10px 17px;
   border-radius: 8px;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sidebar-menu a:hover {
@@ -61,3 +59,74 @@
   font-size: 0.9rem;
   color: #9ca3af;
 }
+
+.sidebar-icon {
+  font-size: 1.3rem;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ============= MOBILE ============= */
+.sidebar.mobile {
+  width: 60px;
+  padding: 20px 0;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.sidebar.mobile .sidebar-menu {
+  align-items: center;
+}
+
+.sidebar.mobile .sidebar-menu a {
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+  margin: 8px;
+}
+
+
+.sidebar.mobile .sidebar-section {
+  display: none;
+}
+
+/* Expanded overlay mode */
+.sidebar.mobile.expanded {
+  width: 260px;
+  padding: 20px 10px;
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Adjust content area when sidebar is small */
+@media (max-width: 768px) {
+  body {
+    margin-left: 60px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    margin-left: 260px;
+  }
+}
+
+
