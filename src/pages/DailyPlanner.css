@@ -232,7 +232,7 @@
 .task-adder {
   display: flex;
   gap: 8px;
-  margin-top: 1rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
 }
 
@@ -271,6 +271,7 @@
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   margin-bottom: 10px;
+  margin-top: 10rem;
   font-size: 0.9rem;
   background: #f8fafc;
   outline: none;
@@ -304,4 +305,8 @@
 
 .icon-btn.danger {
   color: #ef4444;
+}
+
+.no-print {
+  display: none !important;
 }

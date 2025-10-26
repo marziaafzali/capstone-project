@@ -1,43 +1,40 @@
 // api/ai.js
-import fetch from "node-fetch";
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST method allowed" });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const { prompt } = req.body;
+    const { prompt } = await req.json ? await req.json() : req.body;
 
     if (!prompt) {
-      return res.status(400).json({ error: "Missing prompt" });
+      return res.status(400).json({ error: "No prompt provided" });
     }
 
-    console.log("🟢 Received prompt:", prompt);
+    // ✅ Use your real API key from .env
+    const apiKey = process.env.OPENAI_API_KEY;
 
-    const openaiRes = await fetch("https://api.openai.com/v1/completions", {
+    const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo-instruct",
-        prompt,
-        max_tokens: 100,
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
       }),
     });
 
-    const data = await openaiRes.json();
+    const data = await aiRes.json();
 
-    if (data.choices && data.choices.length > 0) {
-      return res.status(200).json({ result: data.choices[0].text.trim() });
+    if (data?.choices?.[0]?.message?.content) {
+      return res.status(200).json({ result: data.choices[0].message.content });
     } else {
-      return res.status(500).json({ error: "No response from OpenAI." });
+      return res.status(500).json({ error: "No response generated." });
     }
-
-  } catch (error) {
-    console.error("❌ Server Error:", error);
-    return res.status(500).json({ error: "Failed to connect to OpenAI." });
+  } catch (err) {
+    console.error("AI error:", err);
+    return res.status(500).json({ error: "Server error" });
   }
 }
