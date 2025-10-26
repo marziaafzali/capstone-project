@@ -105,9 +105,7 @@ body {
 }
 
 /* Hide / Show toggle icons */
-body.nav-open .menu-icon {
-  display: none;
-}
+
 body.nav-open .close-icon {
   display: inline;
   margin-left: 270px;
@@ -115,27 +113,38 @@ body.nav-open .close-icon {
 }
 
 /* ===== Responsive ===== */
-/* ===== Responsive Navbar ===== */
+/* ===== Mobile Navbar Fix ===== */
 @media (max-width: 900px) {
   .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
     padding: 0.75rem 1.5rem;
-    position: relative;
-    z-index: 1100; /* stay above everything */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1200;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
 
+  /* Ensure the hamburger stays inside */
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.8rem;
     color: #0d9488;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1200;
-    position: relative;
+    z-index: 1300;
   }
 
-  .desktop-btn {
-    display: none;
+  /* Lock body scroll when nav is open */
+  body.nav-open {
+    overflow: hidden;
   }
 
   .nav-links {
@@ -145,29 +154,24 @@ body.nav-open .close-icon {
     width: 100%;
     height: 100vh;
     background: white;
+    color: #03634d;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     transition: right 0.3s ease-in-out;
-    z-index: 1000;
-    overflow-y: auto; /* prevents cut-off content */
+    z-index: 1200;
   }
 
-  /* When menu is open */
   body.nav-open .nav-links {
     right: 0;
-  }
-
-  /* Disable page scrolling when nav is open */
-  body.nav-open {
-    overflow: hidden;
   }
 
   .nav-links a {
     font-size: 1.2rem;
     color: #1f2937;
+    text-decoration: none;
   }
 
   .mobile-btn {
@@ -175,6 +179,7 @@ body.nav-open .close-icon {
     margin-top: 1rem;
   }
 }
+
 
 
 
