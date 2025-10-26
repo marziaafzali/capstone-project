@@ -1,0 +1,307 @@
+/* === PAGE WRAPPER === */
+.daily-page {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+.daily-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.daily-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.daily-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* === ACTION BUTTONS === */
+.daily-cta {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn.primary {
+  background: #03634d;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #03634d;
+}
+
+.btn.ghost {
+  background: white;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+.btn.ghost:hover {
+  background: #f1f5f9;
+}
+
+/* === LAYOUT GRID === */
+.daily-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === CARD COMMON === */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+/* === GOALS + METRICS SECTION === */
+.daily-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 1.2rem;
+}
+
+.stat-card h4 {
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.stat-card input,
+.stat-card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.stat-card input:focus,
+.stat-card textarea:focus {
+  border-color: #03634d;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.1);
+}
+
+/* === SCHEDULE LIST === */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.schedule-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.schedule-item:hover {
+  background: #f1f5f9;
+}
+
+.schedule-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.schedule-time {
+  font-weight: 600;
+  min-width: 80px;
+  color: #1e293b;
+}
+
+.schedule-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.schedule-right select {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  padding: 6px;
+  font-size: 0.85rem;
+}
+
+/* === TASKS === */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.task-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+.task-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.task-adder {
+  display: flex;
+  gap: 8px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.task-adder input,
+.task-adder select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.task-adder button {
+  background: #03634d;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.task-adder button:hover {
+  background: #03634d;
+}
+
+/* === REFLECTION + TOMORROW === */
+.reflection input,
+.reflection textarea,
+.tomorrow input,
+.tomorrow textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  background: #f8fafc;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.reflection input:focus,
+.reflection textarea:focus,
+.tomorrow input:focus,
+.tomorrow textarea:focus {
+  border-color: #03634d;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.1);
+}
+
+/* === ICON BUTTONS === */
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.5rem;
+  color: #475569;
+  padding: 6px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.icon-btn:hover {
+  background: #e2e8f0;
+}
+
+.icon-btn.danger {
+  color: #ef4444;
+}

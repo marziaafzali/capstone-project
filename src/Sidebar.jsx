@@ -5,6 +5,8 @@ import { FcPlanner } from "react-icons/fc";
 import { BsGraphUp } from "react-icons/bs";
 import { MdEventNote, MdPolicy } from "react-icons/md";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { IoSettingsSharp } from "react-icons/io5";
+import { CiLogout } from "react-icons/ci";
 import "./Sidebar.css";
 
 export default function Sidebar() {
@@ -54,18 +56,26 @@ export default function Sidebar() {
             <FcPlanner className="sidebar-icon" />
             {(!isMobile || expanded) && "Product Planner"}
           </Link>
-
+            <Link
+            to="/DailyPlanner"
+            className={location.pathname === "/DailyPlanner" ? "active" : ""}
+          >
+            <MdEventNote className="sidebar-icon" />
+            {(!isMobile || expanded) && "DailyPlanner"}
+          </Link>
           <Link
             to="/marketing"
             className={location.pathname === "/marketing" ? "active" : ""}
           >
             <BsGraphUp className="sidebar-icon" />
-            {(!isMobile || expanded) && "Marketing"}
+            {(!isMobile || expanded) && "AI MarketingTips"}
           </Link>
+         
 
-          <hr />
 
-          {/* MANAGEMENT */}
+       
+
+          {/* MANAGEMENT 
           {(!isMobile || expanded) && (
             <h4 className="sidebar-section">Management</h4>
           )}
@@ -78,22 +88,19 @@ export default function Sidebar() {
             {(!isMobile || expanded) && "Company"}
           </Link>
 
-          <hr />
+          <hr />*/}
 
           {/* LEAVE */}
           {(!isMobile || expanded) && (
-            <h4 className="sidebar-section">Leave</h4>
+            <h4 className="sidebar-section" style={{marginTop:"12rem"}}>Leave</h4>
           )}
           <Link to="#" className="sidebar-link">
-            <MdEventNote className="sidebar-icon" />
-            {(!isMobile || expanded) && "Requests"}
+            <IoSettingsSharp className="sidebar-icon" />
+            {(!isMobile || expanded) && "Settings"}
           </Link>
-          <Link to="#" className="sidebar-link">
-            <MdPolicy className="sidebar-icon" />
-            {(!isMobile || expanded) && "Leave Policy"}
-          </Link>
+          
           <Link to="/" className="sidebar-link">
-            <AiOutlineHome className="sidebar-icon" />
+            <CiLogout  className="sidebar-icon" />
             {(!isMobile || expanded) && "Logout"}
           </Link>
         </nav>

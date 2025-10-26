@@ -1,54 +1,147 @@
-.planner-container {
-   text-align: center;
+.planner-page {
   padding: 2rem;
-  margin: 3rem auto;
-  max-width: 1000px; /* same as planner */
-  background: #f9fafb;
-  color: #1e293b;
-  box-sizing: border-box;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+}
+
+.planner-header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Top stats cards - same as dashboard */
+.top-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.top-card {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.top-card h3 {
+  font-size: 1rem;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.top-card p {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.icon {
+  font-size: 2rem;
+  padding: 0.8rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.icon.user { background: #3b82f6; }
+.icon.calendar { background: #ef4444; }
+.icon.video { background: #f59e0b; }
+.icon.like { background: #22c55e; }
+
+/* Form styling - match dashboard card */
+.chart-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .planner-form {
   display: flex;
+  gap: 15px;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
 }
 
-.planner-form input,
-.planner-form button {
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+.planner-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  outline: none;
 }
 
 .planner-form button {
-  background-color: #047857;
-  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  background-color: #03634d;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: bold;
+  color: #fff;
 }
 
-.planner-form button:hover {
-  background-color: #03664b;
+.planner-form button .icon-btn {
+  font-size: 1.2rem;
 }
 
-table {
+/* Table styling - same card style as dashboard */
+.stats-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+}
+
+.planner-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
 }
 
-th, td {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  text-align: center;
+.planner-table th,
+.planner-table td {
+  padding: 12px 15px;
+  text-align: left;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-th {
-  background-color: #047857;
-  color: white;
+.planner-table th {
+  background-color: #f1f5f9;
+}
+
+.planner-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.delete-btn {
+  background: #ef4444;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .top-stats {
+    grid-template-columns: 1fr;
+  }
 }

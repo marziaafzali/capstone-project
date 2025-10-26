@@ -12,6 +12,7 @@ import Signup from "./components/Signup.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { isAuthenticated } from "./auth.js";
 import GetStarted from "./pages/GetStarted.jsx";
+import DailyPlanner from "./pages/DailyPlanner.jsx";
 import DashboardLayout from "./pages/DashboardLayout.jsx";
 
 import "./index.css";
@@ -27,6 +28,7 @@ function App() {
   // Hide navbar on dashboard & auth-related pages
   const hideNavbar =
     location.pathname.startsWith("/dashboard") ||
+    location.pathname.startsWith("/DailyPlanner") ||
     location.pathname.startsWith("/planner") ||
     location.pathname.startsWith("/marketing") ||
     location.pathname.startsWith("/getstarted") ||
@@ -111,6 +113,7 @@ function App() {
   <Route path="/dashboard" element={<Dashboard />} />
   <Route path="/planner" element={<Planner />} />
   <Route path="/marketing" element={<Marketing />} />
+  <Route path="/DailyPlanner" element={<DailyPlanner />} />
 </Route>
       </Routes>
     </div>

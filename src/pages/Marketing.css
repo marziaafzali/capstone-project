@@ -1,0 +1,117 @@
+.marketing-page {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #0f172a;
+}
+
+.dashboard-header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Cards for AI response and tips */
+.chart-box, .stats-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Form */
+.ai-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.ai-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  outline: none;
+  height: 250px;
+}
+
+.ai-form button {
+  padding: 10px 20px;
+  background-color: #03634d;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ai-form button:hover {
+  background-color: #03634d;
+}
+
+/* AI Response Cards */
+.ai-report {
+  margin-top: 1.5rem;
+}
+
+.ai-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.ai-tip-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1rem 1.2rem;
+  transition: 0.3s;
+}
+
+.ai-tip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ai-tip-card h4 {
+  color: #03634d;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ai-tip-card p {
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Chart */
+.ai-chart {
+  margin-top: 2rem;
+  width: 100%;
+  height: 300px;
+}
+
+/* Download button */
+.download-btn {
+  margin-top: 1.5rem;
+  background-color: #03634d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+}
+
+.download-btn:hover {
+  background-color: #03634d;
+}
