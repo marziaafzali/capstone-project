@@ -12,17 +12,11 @@ function MarketingTips() {
     setError("");
     setResult("");
     try {
-     const API_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5000/api/ai"
-    : "/api/ai";
-
-const res = await fetch(API_URL, {
+      const res = await fetch("/api/ai", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ prompt }),
 });
-
 
 
       const data = await res.json();

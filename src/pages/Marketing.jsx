@@ -13,11 +13,11 @@ export default function Marketing() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
+       const res = await fetch("/api/ai", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ prompt }),
+});
       const data = await res.json();
       const responseText = data.result || "No response from AI";
       setAiResponse(responseText);
