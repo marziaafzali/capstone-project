@@ -39,7 +39,7 @@ export default function ProductPlanner() {
 
   return (
     <div className="planner-page">
-      <h1 className="planner-header">Product Planner</h1>
+     
 
       {/* Top Stats Cards */}
       <div className="top-stats">

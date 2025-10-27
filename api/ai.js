@@ -1,40 +1,28 @@
-// api/ai.js
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
+// Example: vite + express or vercel serverless
+export async function POST(req) {
   try {
-    const { prompt } = await req.json ? await req.json() : req.body;
+    const { prompt } = await req.json();
 
-    if (!prompt) {
-      return res.status(400).json({ error: "No prompt provided" });
+    if (!prompt || prompt.trim() === "") {
+      return new Response(
+        JSON.stringify({ error: "Missing prompt" }),
+        { status: 400 }
+      );
     }
 
-    // ✅ Use your real API key from .env
-    const apiKey = process.env.OPENAI_API_KEY;
+    // --- Replace this part with your AI call ---
+    const result = `AI Marketing Plan for: ${prompt.slice(0, 50)}...`;
+    // ------------------------------------------
 
-    const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }],
-      }),
-    });
-
-    const data = await aiRes.json();
-
-    if (data?.choices?.[0]?.message?.content) {
-      return res.status(200).json({ result: data.choices[0].message.content });
-    } else {
-      return res.status(500).json({ error: "No response generated." });
-    }
+    return new Response(
+      JSON.stringify({ result }),
+      { status: 200 }
+    );
   } catch (err) {
-    console.error("AI error:", err);
-    return res.status(500).json({ error: "Server error" });
+    console.error("Server error:", err);
+    return new Response(
+      JSON.stringify({ error: "Internal Server Error", details: err.message }),
+      { status: 500 }
+    );
   }
 }

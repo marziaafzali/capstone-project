@@ -92,7 +92,10 @@ export default function DailyPlanner() {
     <div className="daily-page" ref={plannerRef}>
       <div className="daily-header">
         <div>
-          <h1>Daily Business Planner</h1>
+           <h1 className="dashboard-header">Daily Business Planner</h1>
+      <p className="page-description">
+       The Daily Planner helps you organize your day effectively. Schedule tasks, set goals, and track progress to boost productivity. With dedicated sections for morning prep, schedule, tasks, and reflections, it ensures you stay focused and accountable throughout the day.
+      </p>
           <p className="sub">Date: <strong>{date}</strong></p>
         </div>
 
@@ -145,6 +148,7 @@ export default function DailyPlanner() {
 
         <div className="stat-card">
           <h4>Quick Metrics</h4>
+          
           <div className="metrics">
             <div><small>Tasks</small><strong>{tasks.length}</strong></div>
             <div><small>Scheduled</small><strong>{schedule.length}</strong></div>

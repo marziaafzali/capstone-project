@@ -1,4 +1,4 @@
-
+import { Link, useLocation } from "react-router-dom";
 import {
   FaEnvelope,
   FaPhoneAlt,
@@ -28,15 +28,17 @@ export default function Home() {
           </p>
 
           <div className="hero-buttons">
-            <button className="btn-primary">Get Started Now</button>
+            <button className="btn-primary "> 
+                      <Link style={{textDecoration:"none", color:"white"}}
+                        to="/planner">Get Started Now </Link></button>
             <button className="btn-secondary">Learn More →</button>
-          </div>
+          </div> 
 
           <div className="trusted">
             <p>TRUSTED BY ENTREPRENEURS WORLDWIDE</p>
             <div className="trusted-logos">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Airbnb_Logo_Bélo.svg"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/768px-Airbnb_Logo_B%C3%A9lo.svg.png"
                 alt="Airbnb"
               />
               <img

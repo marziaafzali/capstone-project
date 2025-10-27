@@ -7,17 +7,11 @@ export default function Planner() {
   return (
     <>
     <div style={{ padding: "2rem" }}>
-      <h1
-        style={{
-          textAlign: "center",
-          marginBottom: "1rem",
-          color: "#333",
-          fontSize: "2rem",
-        }}
-      >
-        🧾 Business Product Planner
-      </h1>
-
+     
+      <h1 className="dashboard-header">🧾 Business Product Planner</h1>
+      <p className="page-description">
+        This section is designed for entrepreneurs, small business owners, and product managers who want to plan, track, and optimize their product ideas. Use the Product Planner to outline product features, define goals, estimate costs, and manage timelines. It helps you make smarter decisions before launching a new product or improving an existing one.
+      </p>
       <p
         style={{
           textAlign: "center",

@@ -7,98 +7,83 @@
 }
 
 .dashboard-header {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
   text-align: center;
+  color: #03634d;
 }
 
-/* Cards for AI response and tips */
+.page-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #334155;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Cards */
 .chart-box, .stats-box {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 2rem;
   margin-bottom: 2rem;
 }
 
 /* Form */
 .ai-form {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: center;
   margin-bottom: 2rem;
 }
 
-.ai-form input {
-  flex: 1;
-  padding: 10px;
+.ai-form input, .ai-form textarea {
+  padding: 12px 14px;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  outline: none;
-  height: 250px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.ai-form textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 .ai-form button {
-  padding: 10px 20px;
+  padding: 12px;
   background-color: #03634d;
   border: none;
   border-radius: 8px;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .ai-form button:hover {
-  background-color: #03634d;
+  background-color: #024e3a;
 }
 
-/* AI Response Cards */
-.ai-report {
-  margin-top: 1.5rem;
-}
-
-.ai-card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.ai-tip-card {
-  background: #f9fafb;
+/* AI Response */
+.ai-report pre {
+  background: #f1f5f9;
   border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 1rem 1.2rem;
-  transition: 0.3s;
-}
-
-.ai-tip-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.ai-tip-card h4 {
-  color: #03634d;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.ai-tip-card p {
-  color: #334155;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  padding: 1rem;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
 }
 
 /* Chart */
 .ai-chart {
   margin-top: 2rem;
-  width: 100%;
-  height: 300px;
 }
 
-/* Download button */
+/* Download */
 .download-btn {
   margin-top: 1.5rem;
   background-color: #03634d;
@@ -113,5 +98,32 @@
 }
 
 .download-btn:hover {
-  background-color: #03634d;
+  background-color: #024e3a;
+}
+
+/* Tips */
+.ai-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.ai-tip-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1rem 1.2rem;
+  transition: 0.3s;
+}
+
+.ai-tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ai-tip-card h4 {
+  color: #03634d;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }

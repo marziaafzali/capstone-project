@@ -57,19 +57,20 @@ export default function Sidebar() {
             {(!isMobile || expanded) && "Product Planner"}
           </Link>
             <Link
-            to="/DailyPlanner"
-            className={location.pathname === "/DailyPlanner" ? "active" : ""}
-          >
-            <MdEventNote className="sidebar-icon" />
-            {(!isMobile || expanded) && "DailyPlanner"}
-          </Link>
-          <Link
             to="/marketing"
             className={location.pathname === "/marketing" ? "active" : ""}
           >
             <BsGraphUp className="sidebar-icon" />
             {(!isMobile || expanded) && "AI MarketingTips"}
           </Link>
+            <Link
+            to="/DailyPlanner"
+            className={location.pathname === "/DailyPlanner" ? "active" : ""}
+          >
+            <MdEventNote className="sidebar-icon" />
+            {(!isMobile || expanded) && "DailyPlanner"}
+          </Link>
+        
          
 
 

@@ -32,8 +32,11 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      <h1 className="dashboard-header">Dashboard Overview</h1>
-
+    
+        <h1 className="dashboard-header">Dashboard Overview</h1>
+      <p className="page-description">
+       The Dashboard provides a bird’s-eye view of your business performance. Monitor key metrics, track progress, and visualize insights in one place. With real-time stats, charts, and summaries, the Dashboard helps you stay informed and make data-driven decisions quickly.
+      </p>
       {/* Top Stats Cards */}
       <div className="top-stats">
         <div className="top-card">
