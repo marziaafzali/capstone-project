@@ -97,7 +97,7 @@ body {
 
 .menu-icon {
   display: inline;
- margin-left: 200px;
+ margin-left: 210px;
 }
 
 .close-icon {
@@ -111,7 +111,7 @@ body.nav-open .menu-icon {
 }
 body.nav-open .close-icon {
   display: inline;
-  margin-left: 200px;
+  margin-left: 210px;
   font-size: 50px;
 }
 
