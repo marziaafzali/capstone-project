@@ -74,7 +74,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-   position: relative;
+   position: sticky;
 }
 
 .nav-left {
@@ -97,7 +97,7 @@ body {
 
 .menu-icon {
   display: inline;
-  margin-left: 270px;
+ margin-left: 200px;
 }
 
 .close-icon {
@@ -105,15 +105,17 @@ body {
 }
 
 /* Hide / Show toggle icons */
-
+body.nav-open .menu-icon {
+  display: none;
+  
+}
 body.nav-open .close-icon {
   display: inline;
-  margin-left: 270px;
+  margin-left: 200px;
   font-size: 50px;
 }
 
 /* ===== Responsive ===== */
-/* ===== Mobile Navbar Fix ===== */
 @media (max-width: 900px) {
   .navbar {
     position: fixed;
@@ -131,7 +133,7 @@ body.nav-open .close-icon {
 
   /* Ensure the hamburger stays inside */
   .menu-toggle {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
