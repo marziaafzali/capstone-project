@@ -20,7 +20,7 @@ function MarketingTips() {
 
 
       const data = await res.json();
-      console.log("🔹 API Response:", data); // 🧠 check what frontend receives
+      console.log("🔹 API Response:", data); 
 
       if (data.result && data.result !== "No response generated.") {
         setResult(data.result);

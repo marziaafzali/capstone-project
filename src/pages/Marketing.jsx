@@ -46,12 +46,16 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
 `;
 
     try {
-      const res = await fetch("http://localhost:5000/api/ai", {
+      const API_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000/api/ai"
+    : `${window.location.origin}/api/ai`;
+
+const res = await fetch(API_URL, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ prompt }),
-
-      });
+});
 
       // Handle HTTP errors gracefully
       if (!res.ok) {
