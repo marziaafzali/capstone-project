@@ -310,3 +310,147 @@
 .no-print {
   display: none !important;
 }
+
+
+
+
+
+
+/* === REFINED REFLECTION CARD === */
+.reflection-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-height: 460px; /* keeps size balanced */
+}
+
+.reflection-group label {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.reflection-input {
+  width: 90%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  min-height: 70px;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.reflection-input:focus {
+  border-color: #03634d;
+  box-shadow: 0 0 0 3px rgba(3, 99, 77, 0.1);
+  background: #ffffff;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rating-row label {
+  font-weight: 600;
+  color: #334155;
+}
+
+.rating-input {
+  width: 80px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  resize: none;
+}
+
+.rating-input:focus {
+  border-color: #03634d;
+  box-shadow: 0 0 0 3px rgba(3, 99, 77, 0.1);
+}
+
+/* === TOP BUTTONS === */
+.planner-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 20px 0 10px;
+}
+
+.btn {
+  background: #03634d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: #048d6e;
+}
+
+.clear-btn {
+  background: #b91c1c;
+}
+
+.clear-btn:hover {
+  background: #dc2626;
+}
+
+.export-btn {
+  background: #03634d;
+}
+
+/* === DELETE BUTTON + CHECKBOX IMPROVEMENTS === */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #03634d;
+  cursor: pointer;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: 0.2s ease;
+  padding: 5px;
+}
+
+.icon-btn:hover {
+  color: #ef4444;
+  transform: scale(1.1);
+}

@@ -24,18 +24,20 @@
 .sidebar-title {
   margin: 20px auto;
   font-size: 28px;
-  color:#000;
+  color:#03634d;
 }
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+    margin-top: 20px;
+
 }
 
 .sidebar-menu a {
   text-decoration: none;
-  color: #000;
+  color: #03634d;
   padding: 10px 17px;
   border-radius: 8px;
   transition: 0.3s;
@@ -52,6 +54,8 @@
 .sidebar-menu a.active {
   background-color: #03634d;
   font-weight: 600;
+    color: white;
+
 }
 
 .sidebar-section {
@@ -67,7 +71,7 @@
 .collapse-btn {
   background: none;
   border: none;
-  color: white;
+  color:#03634d;
   font-size: 1.6rem;
   cursor: pointer;
 }
@@ -100,7 +104,7 @@
 .sidebar.mobile.expanded {
   width: 260px;
   padding: 20px 10px;
-  background: #000;
+  background: white;
   position: fixed;
   left: 0;
   top: 0;
