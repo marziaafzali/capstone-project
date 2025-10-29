@@ -14,7 +14,6 @@ import { isAuthenticated } from "./auth.js";
 import GetStarted from "./pages/GetStarted.jsx";
 import DailyPlanner from "./pages/DailyPlanner.jsx";
 import DashboardLayout from "./pages/DashboardLayout.jsx";
-
 import "./index.css";
 
 function App() {
@@ -37,8 +36,6 @@ function App() {
 
   return (
     <div>
-      {/* Public Navbar */}
-     {/* Public Navbar */}
 {/* Public Navbar */}
 {!hideNavbar && (
   <header className="navbar">
@@ -70,7 +67,7 @@ function App() {
       <Link to="/Contact" onClick={() => document.body.classList.remove("nav-open")}>
         Contact
       </Link>
-
+     
       {/* Get Started for mobile */}
       <button
         className="btn-primary mobile-btn"
@@ -115,7 +112,9 @@ function App() {
   <Route path="/marketing" element={<Marketing />} />
   <Route path="/DailyPlanner" element={<DailyPlanner />} />
 </Route>
+  
       </Routes>
+       
     </div>
   );
 }
