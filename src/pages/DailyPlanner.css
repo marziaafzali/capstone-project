@@ -454,3 +454,29 @@
   color: #ef4444;
   transform: scale(1.1);
 }
+
+/* === Done Task Styling === */
+.task-item.done .task-input {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.8;
+}
+
+.task-item.done small {
+  color: #aaa;
+}
+
+.task-item.done {
+  background: #f7f7f7;
+  border-left: 4px solid #00b894;
+  transition: all 0.3s ease;
+}
+
+
+/* === Hide elements during PDF export === */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+}

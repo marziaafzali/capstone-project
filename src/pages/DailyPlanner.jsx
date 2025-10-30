@@ -36,10 +36,15 @@ export default function DailyPlanner() {
   };
 
   const toggleDone = (id) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+  setTasks((prev) => {
+    const updated = prev.map((t) =>
+      t.id === id ? { ...t, done: !t.done } : t
     );
-  };
+    // Automatically push done tasks to the bottom
+    return updated.sort((a, b) => a.done - b.done);
+  });
+};
+
 
   const deleteItem = (id) => {
     setTasks((prev) => prev.filter((t) => t.id !== id));
@@ -58,13 +63,22 @@ export default function DailyPlanner() {
   };
 
   // === Export to PDF ===
-  const exportPDF = async () => {
-    const input = plannerRef.current;
-    if (!input) return;
+const exportPDF = async () => {
+  const input = plannerRef.current;
+  if (!input) return;
 
+  // Step 1: Select the buttons container
+  const actionSection = document.querySelector(".planner-actions");
+
+  // Step 2: Temporarily hide the buttons during export
+  if (actionSection) actionSection.style.display = "none";
+
+  try {
+    // Step 3: Capture the planner as an image
     const canvas = await html2canvas(input, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF("p", "mm", "a4");
+
     const imgWidth = 210;
     const pageHeight = 297;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
@@ -83,7 +97,15 @@ export default function DailyPlanner() {
     }
 
     pdf.save(`DailyPlanner_${date.replace(/\//g, "-")}.pdf`);
-  };
+  } catch (err) {
+    console.error("PDF export failed:", err);
+  } finally {
+    // ✅ Step 4: Restore visibility after export
+    if (actionSection) actionSection.style.display = "flex";
+  }
+};
+
+
 
   return (
     <div className="daily-page" ref={plannerRef}>
@@ -100,14 +122,17 @@ export default function DailyPlanner() {
         </p>
 
         {/* TOP ACTION BUTTONS */}
-        <div className="planner-actions">
-          <button className="btn clear-btn" onClick={clearPlanner}>
-            Clear All
-          </button>
-          <button className="btn export-btn" onClick={exportPDF}>
-            Export as PDF
-          </button>
-        </div>
+     <div className="planner-actions">
+  <button className="btn clear-btn" onClick={clearPlanner}>
+    Clear All
+  </button>
+  <button className="btn export-btn" onClick={exportPDF}>
+    Export as PDF
+  </button>
+</div>
+
+
+
       </div>
 
       {/* TOP GOALS & FINANCE */}
@@ -177,18 +202,23 @@ export default function DailyPlanner() {
                       checked={t.done}
                       onChange={() => toggleDone(t.id)}
                     />
-                    <input
-                      className="task-input"
-                      value={t.text}
-                      placeholder="Task description..."
-                      onChange={(e) =>
-                        setTasks((prev) =>
-                          prev.map((it) =>
-                            it.id === t.id ? { ...it, text: e.target.value } : it
-                          )
-                        )
-                      }
-                    />
+                   <input
+  className="task-input"
+  value={t.text}
+  style={{
+    textDecoration: t.done ? "line-through" : "none",
+    color: t.done ? "#888" : "inherit",
+  }}
+  placeholder="Task description..."
+  onChange={(e) =>
+    setTasks((prev) =>
+      prev.map((it) =>
+        it.id === t.id ? { ...it, text: e.target.value } : it
+      )
+    )
+  }
+/>
+
                     <small className="muted">{t.priority}</small>
                   </div>
                   <button
@@ -228,7 +258,7 @@ export default function DailyPlanner() {
             <h3>Evening Reflection</h3>
 
             <div className="reflection-group">
-              <label>🌟 Wins Today</label>
+              <label> Wins Today</label>
               <textarea
                 className="reflection-input"
                 value={reflection.wins}
@@ -240,7 +270,7 @@ export default function DailyPlanner() {
             </div>
 
             <div className="reflection-group">
-              <label>⚡ Challenges Faced</label>
+              <label> Challenges Faced</label>
               <textarea
                 className="reflection-input"
                 value={reflection.challenges}
@@ -252,7 +282,7 @@ export default function DailyPlanner() {
             </div>
 
             <div className="reflection-group">
-              <label>💡 Lessons & Improvements</label>
+              <label> Lessons & Improvements</label>
               <textarea
                 className="reflection-input"
                 value={reflection.lessons}

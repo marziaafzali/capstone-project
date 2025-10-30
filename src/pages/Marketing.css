@@ -39,19 +39,23 @@
   gap: 1rem;
   margin-bottom: 2rem;
 }
-
-.ai-form input, .ai-form textarea {
+.ai-form input,
+.ai-form textarea {
   padding: 12px 14px;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   font-size: 1rem;
   width: 100%;
+  box-sizing: border-box;
+  display: block;
 }
 
 .ai-form textarea {
   min-height: 100px;
-  resize: vertical;
+  resize: none;
+  overflow: auto; 
 }
+
 
 .ai-form button {
   padding: 12px;
@@ -60,6 +64,7 @@
   border-radius: 8px;
   color: #fff;
   font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
   transition: background 0.3s;
 }
