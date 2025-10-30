@@ -93,7 +93,7 @@ export default function Sidebar() {
 
           {/* LEAVE */}
           {(!isMobile || expanded) && (
-            <h4 className="sidebar-section" style={{marginTop:"12rem"}}>Leave</h4>
+            <h4 className="sidebar-section" style={{marginTop:"10rem"}}>Leave</h4>
           )}
           <Link to="#" className="sidebar-link">
             <IoSettingsSharp className="sidebar-icon" />

@@ -23,6 +23,7 @@ export default function Marketing() {
 
   const [aiResponse, setAiResponse] = useState("");
   const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(false); // ✅ loading state
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,8 +31,9 @@ export default function Marketing() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setAiResponse("");
 
-    // 🧠 Build the AI prompt dynamically from the form
     const prompt = `
 You are an expert marketing strategist. 
 Create a detailed, actionable marketing plan for the following business:
@@ -47,38 +49,28 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
 
     try {
       const API_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5000/api/ai"
-    : `${window.location.origin}/api/ai`;
+        import.meta.env.MODE === "development"
+          ? "http://localhost:5000/api/ai"
+          : "https://your-backend-domain.vercel.app/api/ai"; // ✅ use your live backend URL
 
-const res = await fetch(API_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ prompt }),
-});
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
 
-      // Handle HTTP errors gracefully
       if (!res.ok) {
         const text = await res.text();
         console.error("AI Server Error:", text);
         setAiResponse("⚠️ The AI server returned an error. Please try again.");
+        setLoading(false);
         return;
       }
 
-      // Parse safely
-      let data;
-      try {
-        data = await res.json();
-      } catch (err) {
-        console.error("JSON parse error:", err);
-        setAiResponse("⚠️ The AI server sent an invalid response format.");
-        return;
-      }
-
+      const data = await res.json();
       const responseText = data.result || "No response from AI.";
       setAiResponse(responseText);
 
-      // Extract visual suggestions for chart
       const suggestions = responseText
         .split(/\n(?=\d+\.)/)
         .filter((tip) => tip.trim() !== "");
@@ -92,6 +84,8 @@ const res = await fetch(API_URL, {
     } catch (err) {
       console.error("AI Request failed:", err);
       setAiResponse("❌ Failed to connect to the AI server.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -99,15 +93,13 @@ const res = await fetch(API_URL, {
     <div className="marketing-page">
       <h1 className="dashboard-header">Micro-Business Marketing Planner</h1>
       <p className="page-description">
-        This section is designed for small and micro-business owners who want
-        to create a focused, data-driven marketing plan using AI. Just fill in
-        your business details and let the AI generate a tailored plan to meet
-        your goals and budget.
+        This tool helps small and micro-business owners generate a data-driven
+        marketing plan with AI. Fill in your details and let the AI design a
+        plan tailored to your goals and budget.
       </p>
 
-      {/* === AI Business Plan Generator === */}
       <div className="chart-box">
-        <h2>🧩 AI Business Plan Generator</h2>
+        <h2>🧩 AI Marketing Plan Generator</h2>
 
         <form className="ai-form" onSubmit={handleSubmit}>
           <input
@@ -146,18 +138,23 @@ const res = await fetch(API_URL, {
             name="goals"
             value={formData.goals}
             onChange={handleChange}
-            placeholder="What are your main goals? (e.g., grow Instagram followers, boost online sales)"
+            placeholder="Main Goals (e.g., boost online sales, grow social media)"
             required
           />
-          <button type="submit">Generate Plan</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "⚙️ Generating..." : "Generate Plan"}
+          </button>
         </form>
 
-        {/* === AI Response === */}
         {aiResponse && (
           <div className="ai-report">
             <h3>✨ Your AI-Generated Marketing Plan</h3>
             <div className="ai-plan">
-              <pre>{aiResponse}</pre>
+              {aiResponse.split(/\n(?=\d+\.)/).map((line, idx) => (
+                <p key={idx} className="ai-step">
+                  {line.trim()}
+                </p>
+              ))}
             </div>
 
             <h3>📊 Visual Summary</h3>
@@ -168,26 +165,24 @@ const res = await fetch(API_URL, {
                   <XAxis dataKey="name" />
                   <YAxis domain={[0, 100]} />
                   <Tooltip />
-                  <Bar
-                    dataKey="relevance"
-                    fill="#03634d"
-                    radius={[6, 6, 0, 0]}
-                  />
+                  <Bar dataKey="relevance" fill="#03634d" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
 
             <button
-              className="download-btn"
-              onClick={() =>
-                downloadPdf(
-                  aiResponse,
-                  `${formData.businessName || "Business"}_MarketingPlan.pdf`
-                )
-              }
-            >
-              <AiOutlineDownload /> Download Plan as PDF
-            </button>
+  className="download-btn"
+  onClick={() =>
+    downloadPdf(
+      aiResponse,
+      `${formData.businessName || "Business"}_MarketingPlan.pdf`,
+      formData // ✅ send the business info
+    )
+  }
+>
+  <AiOutlineDownload /> Download Plan as PDF
+</button>
+
           </div>
         )}
       </div>
