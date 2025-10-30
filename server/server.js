@@ -8,7 +8,8 @@ const app = express();
 
 // ✅ allow only your frontend origin
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"], // allow both ports
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://capstone-project-one-theta.vercel.app"], // allow both ports
+  methods: ["GET", "POST"],
 }));
 
 app.use(express.json());
