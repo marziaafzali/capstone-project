@@ -77,26 +77,33 @@ Goals: ${formData.goals}
 Please include 5–7 clear, numbered steps with practical ideas and measurable actions.
 `;
 
-  // ✅ helper to clean messy AI text
+  // 🧹 Helper to clean and normalize messy AI text
   const cleanAiText = (raw) => {
     if (!raw) return "";
-    // strip HTML if any
+
+    // 1️⃣ Strip HTML tags
     try {
       const parser = new DOMParser();
       const doc = parser.parseFromString(raw, "text/html");
       raw = doc.body.textContent ?? raw;
     } catch {}
-    // normalize characters
+
+    // 2️⃣ Remove Markdown symbols (###, **, etc.)
     raw = raw
-      .replace(/[‘’]/g, "'")
-      .replace(/[“”]/g, '"')
-      .replace(/—/g, "-")
-      .replace(/\u00A0/g, " ")
+      .replace(/\*\*(.*?)\*\*/g, "$1") // remove bold
+      .replace(/#+\s*/g, "") // remove headers
+      .replace(/[-*_]{2,}/g, "") // remove separators
+      .replace(/\[(.*?)\]\(.*?\)/g, "$1") // remove links
+      .replace(/\u00A0/g, " "); // replace non-breaking spaces
+
+    // 3️⃣ Normalize newlines and step numbering
+    raw = raw
       .replace(/\r\n/g, "\n")
       .replace(/\r/g, "\n")
       .replace(/\n{3,}/g, "\n\n")
-      .replace(/(\d+)\.\s+/g, "\n$1. ")
+      .replace(/(\d+)\.\s*/g, "\n$1. ") // ensure proper numbering
       .trim();
+
     return raw;
   };
 
@@ -104,7 +111,7 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
     const API_URL =
       import.meta.env.MODE === "development"
         ? "http://localhost:5000/api/ai"
-        : "https://capstone-project-one-theta.vercel.app/api/ai"; // ✅ your live backend
+        : "https://capstone-project-one-theta.vercel.app/api/ai"; // ✅ Live backend
 
     const res = await fetch(API_URL, {
       method: "POST",
@@ -122,13 +129,14 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
 
     const data = await res.json();
 
-    // ✅ clean and normalize the response
-    const raw = data.result || data.text || "No response from AI.";
-    const cleaned = cleanAiText(raw);
-    setAiResponse(cleaned);
+    // ✅ Clean up the AI response
+    const rawResponse = data.result || data.text || "No response from AI.";
+    const cleanedResponse = cleanAiText(rawResponse);
 
-    // ✅ build chart data from clean text
-    const suggestions = cleaned
+    setAiResponse(cleanedResponse);
+
+    // ✅ Extract step list for visualization
+    const suggestions = cleanedResponse
       .split(/\n(?=\d+\.)/)
       .map((tip) => tip.trim())
       .filter(Boolean);
