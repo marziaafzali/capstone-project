@@ -28,13 +28,43 @@ export default function Marketing() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  
+  // helper: clean returned AI text
+function cleanAiText(raw) {
+  if (!raw) return "";
+
+  // 1) If server returned HTML, strip tags
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(raw, "text/html");
+    raw = doc.body.textContent ?? raw;
+  } catch (e) {
+    // fallback: no DOMParser available (should be available in browser)
+  }
+
+  // 2) Replace smart quotes/dashes that break jsPDF rendering
+  raw = raw
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/—/g, "-")
+    .replace(/\u00A0/g, " "); // non-breaking spaces
+
+  // 3) Normalize line endings and collapse many blank lines to a single blank line
+  raw = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n").replace(/\n{3,}/g, "\n\n");
+
+  // 4) Trim whitespace and ensure numbered list lines are on their own lines
+  // If AI returns "1. Step one 2. Step two" -> insert newline before numbers
+  raw = raw.replace(/(\d+)\.\s+/g, "\n$1. ").trim();
+
+  return raw;
+}
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setAiResponse("");
+  e.preventDefault();
+  setLoading(true);
+  setAiResponse("");
 
-    const prompt = `
+  const prompt = `
 You are an expert marketing strategist. 
 Create a detailed, actionable marketing plan for the following business:
 
@@ -47,47 +77,76 @@ Goals: ${formData.goals}
 Please include 5–7 clear, numbered steps with practical ideas and measurable actions.
 `;
 
+  // ✅ helper to clean messy AI text
+  const cleanAiText = (raw) => {
+    if (!raw) return "";
+    // strip HTML if any
     try {
-      const API_URL =
-        import.meta.env.MODE === "development"
-          ? "http://localhost:5000/api/ai"
-          : "https://capstone-project-one-theta.vercel.app/api/ai"; // ✅ use your live backend URL
-
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        console.error("AI Server Error:", text);
-        setAiResponse("⚠️ The AI server returned an error. Please try again.");
-        setLoading(false);
-        return;
-      }
-
-      const data = await res.json();
-      const responseText = data.result || "No response from AI.";
-      setAiResponse(responseText);
-
-      const suggestions = responseText
-        .split(/\n(?=\d+\.)/)
-        .filter((tip) => tip.trim() !== "");
-
-      const visualData = suggestions.map((tip, i) => ({
-        name: `Step ${i + 1}`,
-        relevance: Math.floor(Math.random() * 40) + 60,
-      }));
-
-      setChartData(visualData);
-    } catch (err) {
-      console.error("AI Request failed:", err);
-      setAiResponse("❌ Failed to connect to the AI server.");
-    } finally {
-      setLoading(false);
-    }
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(raw, "text/html");
+      raw = doc.body.textContent ?? raw;
+    } catch {}
+    // normalize characters
+    raw = raw
+      .replace(/[‘’]/g, "'")
+      .replace(/[“”]/g, '"')
+      .replace(/—/g, "-")
+      .replace(/\u00A0/g, " ")
+      .replace(/\r\n/g, "\n")
+      .replace(/\r/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .replace(/(\d+)\.\s+/g, "\n$1. ")
+      .trim();
+    return raw;
   };
+
+  try {
+    const API_URL =
+      import.meta.env.MODE === "development"
+        ? "http://localhost:5000/api/ai"
+        : "https://capstone-project-one-theta.vercel.app/api/ai"; // ✅ your live backend
+
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt }),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("AI Server Error:", text);
+      setAiResponse("⚠️ The AI server returned an error. Please try again.");
+      setLoading(false);
+      return;
+    }
+
+    const data = await res.json();
+
+    // ✅ clean and normalize the response
+    const raw = data.result || data.text || "No response from AI.";
+    const cleaned = cleanAiText(raw);
+    setAiResponse(cleaned);
+
+    // ✅ build chart data from clean text
+    const suggestions = cleaned
+      .split(/\n(?=\d+\.)/)
+      .map((tip) => tip.trim())
+      .filter(Boolean);
+
+    const visualData = suggestions.map((tip, i) => ({
+      name: `Step ${i + 1}`,
+      relevance: Math.floor(Math.random() * 40) + 60,
+    }));
+
+    setChartData(visualData);
+  } catch (err) {
+    console.error("AI Request failed:", err);
+    setAiResponse("❌ Failed to connect to the AI server.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="marketing-page">
