@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import "./Dashboard.css";
 
+
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
 
@@ -32,7 +33,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-    
+      
         <h1 className="dashboard-header">Dashboard Overview</h1>
       <p className="page-description">
        The Dashboard provides a bird’s-eye view of your business performance. Monitor key metrics, track progress, and visualize insights in one place. With real-time stats, charts, and summaries, the Dashboard helps you stay informed and make data-driven decisions quickly.
@@ -42,7 +43,7 @@ export default function Dashboard() {
         <div className="top-card">
           <div className="icon user">👤</div>
           <div>
-            <h3>Number of Products</h3>
+            <h3>Total Products</h3>
             <p>{totalProducts}</p>
           </div>
         </div>

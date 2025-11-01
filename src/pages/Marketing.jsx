@@ -166,7 +166,7 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
       </p>
 
       <div className="chart-box">
-        <h2>🧩 AI Marketing Plan Generator</h2>
+        <h2> AI Marketing Plan Generator</h2>
 
         <form className="ai-form" onSubmit={handleSubmit}>
           <input
@@ -215,7 +215,7 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
 
         {aiResponse && (
           <div className="ai-report">
-            <h3>✨ Your AI-Generated Marketing Plan</h3>
+            <h3> Your AI-Generated Marketing Plan</h3>
             <div className="ai-plan">
               {aiResponse.split(/\n(?=\d+\.)/).map((line, idx) => (
                 <p key={idx} className="ai-step">
@@ -252,6 +252,47 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
 
           </div>
         )}
+      </div>
+       {/* === Extra Marketing Tips === */}
+      <div className="stats-box">
+        <h2>Proven Marketing Tips</h2>
+        <div className="ai-card-container">
+          <div className="ai-tip-card">
+            <h4>🎯 Focus on Niche Marketing</h4>
+            <p>
+              Identify your most profitable micro-audience and target them with
+              precision.
+            </p>
+          </div>
+          <div className="ai-tip-card">
+            <h4>📱 Build Local Social Proof</h4>
+            <p>
+              Encourage customers to share their experiences online — it builds
+              community trust.
+            </p>
+          </div>
+          <div className="ai-tip-card">
+            <h4>💡 Use Free Tools</h4>
+            <p>
+              Leverage Canva, Google My Business, and Mailchimp to save costs
+              and stay efficient.
+            </p>
+          </div>
+          <div className="ai-tip-card">
+            <h4>📊 Track Performance</h4>
+            <p>
+              Use insights from your social platforms to understand what content
+              performs best.
+            </p>
+          </div>
+          <div className="ai-tip-card">
+            <h4>🧠 Adapt Fast</h4>
+            <p>
+              Stay flexible — microbusinesses win by reacting quickly to
+              customer needs.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@
 .dashboard-header {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
   color: #0f172a;
 }
@@ -50,10 +50,10 @@
   color: white;
 }
 
-.icon.user { background: #3b82f6; }
-.icon.calendar { background: #ef4444; }
-.icon.video { background: #f59e0b; }
-.icon.like { background: #22c55e; }
+.icon.user { background:  #bbd9e7;}
+.icon.calendar { background: #f19daa;}
+.icon.video { background: #efd19f;}
+.icon.like { background: #c2edd2;}
 
 /* === CHART + REPORTS === */
 .dashboard-content {
@@ -101,10 +101,11 @@
   font-size: 1.1rem;
 }
 
-.report-card.income { background: #acdad4; }
-.report-card.sales { background: #91c2d8; }
-.report-card.users { background: #cdc6c1; }
-.report-card.orders { background: #e993a0; }
+
+.report-card.sales { background:  #c2edd2;}
+.report-card.orders { background: #bbd9e7;}
+.report-card.users { background: #efd19f;}
+.report-card.income { background: #f19daa;}
 
 .no-data {
   color: #6b7280;
@@ -116,9 +117,12 @@
 @media (max-width: 900px) {
   .dashboard-content {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .report-cards {
     grid-template-columns: 1fr;
+        width: 100%;
+
   }
 }

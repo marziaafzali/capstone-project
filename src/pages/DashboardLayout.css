@@ -1,19 +1,40 @@
-/* Dashboard layout / sidebar styles */
-
+/* Dashboard layout container */
 .dashboard-layout {
   display: flex;
-  min-height: 100vh;
-  background: #f7faf9; /* light page background */
+  background: #f7faf9;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
+/* Sidebar fixed width for desktop */
+.dashboard-layout.sidebar-open .dashboard-main {
+  margin-left: 260px; /* matches .sidebar width */
+}
 
+/* When collapsed on mobile */
+.dashboard-layout.sidebar-collapsed .dashboard-main {
+  margin-left: 60px;
+}
 
-/* Main content region offset to the right of the fixed sidebar */
+/* Main content area */
 .dashboard-main {
-  margin-left: 260px; /* must match sidebar width */
-  padding: 28px;
   flex: 1;
-  min-height: 100vh;
+  padding: 28px;
   box-sizing: border-box;
+  margin-left: 20px;
+  min-height: 100vh;
+  background: #f8fafc;
+  transition: margin-left 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .dashboard-layout.sidebar-open .dashboard-main {
+    margin-left: 0; /* full width when sidebar overlayed */
+  }
+
+  .dashboard-main {
+    padding: 20px 50px;
+  }
 }
