@@ -5,6 +5,7 @@
   font-family: "Poppins", sans-serif;
   color: #0f172a;
   box-sizing: border-box;
+  
 }
 
 .dashboard-header {
@@ -170,4 +171,16 @@ height: 100px;
   color: #03634d;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+
+@media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+  }
+
+  .marketing-page {
+    overflow-x: hidden;
+    width: 100%;
+  }
 }
