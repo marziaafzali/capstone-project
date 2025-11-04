@@ -111,7 +111,7 @@ Please include 5–7 clear, numbered steps with practical ideas and measurable a
     const API_URL =
       import.meta.env.MODE === "development"
         ? "http://localhost:5000/api/ai"
-        : "https://capstone-project-one-theta.vercel.app/api/ai"; // ✅ Live backend
+        : "https://capstone-project-vffe.vercel.app//api/ai"; // ✅ Live backend
 
     const res = await fetch(API_URL, {
       method: "POST",
